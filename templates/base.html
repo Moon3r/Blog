@@ -1,0 +1,72 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{{ SITE_NAME }}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="author" content="{{ SITE_NAME }}"/>
+	<meta name="msapplication-TileColor" content="#3ac19f"/>
+	<!-- 请将站点icon和图表放到站点根目录 -->
+	<link rel="shortcut icon" type="images/ico" href="{% static 'images/favicon.ico' %}" />
+	<meta name="msapplication-TileImage" content="{% static 'images/icon.jpg' %}"/>
+	<meta name="apple-mobile-web-app-title" content="{{ SITE_NAME }}">
+	<meta name="Keywords" content="MoR03r"/>
+	<meta name="Description" content="{{ SITE_NAME }} "/>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
+	<link rel="stylesheet" href="{% static 'css/markdown.css' %}"></head>
+<body>
+<header>
+<div class="main">
+	<div class="intro">
+		<!-- 调用后台上传的头像，请到后台上传 -->
+		<img src="{% static 'images/favicon.ico' %}" class="intro-logo"/>
+		<span class="intro-sitename"><a href="/">MoR03r		</a></span>
+		<span class="intro-siteinfo">MoR03r's Blog		</span>
+	</div>
+	<nav>
+	<div class="collapse">
+		<i class="iconfont icon-menu"></i>
+	</div>
+	{% block sort-bk %}
+		<ul class="bar">
+			{% for sort in sort_list %}
+				<li><a href="/sort={{ sort.id }}">{{ sort.sortname }}</a></li>
+			{% endfor %}
+		</ul>
+	{% endblock %}
+	</nav>
+</div>
+</header>
+{% block content %}
+{% endblock %}
+{% block per-content %}
+{% endblock %}
+{% block content-block %}
+{% endblock %}
+{% block sortdetail %}
+{% endblock %}
+<footer>
+				<span>友情链接:</span>&nbsp;&nbsp;&nbsp;
+				{% for link in friend_link %}
+					<a href='{{ link.siteurl }}' target='_blank'>{{ link.sitename }}</a>&nbsp;
+				{% endfor %}
+	&nbsp;&nbsp;&nbsp;<br>
+		© 2017-至今 <a href="./">MoR03r</a> <i class="iconfont icon-icp"></i><br>Powered by <a href="./">MoR03r</a>
+</footer>
+	<div class="toTop">TOP</div>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="https://blog.myiooc.cn/include/lib/js/common_tpl.js"></script>
+<!-- 一言调用（副标题），不需要可以删除下面一行 -->
+<script src="{% static 'js/hitokoto.js' %}"></script>
+<script src="{% static 'js/scrolltop.js' %}"></script>
+<script src="{% static 'js/collapse.js' %}"></script>
+<script src="{% static 'js/smoothscroll.js' %}"></script>
+<script src="{% static 'js/busuanzi.pure.mini.js' %}"></script>
+<script src="{% static 'js/instantclick.min.js' %}" data-no-instant></script>
+<!-- Instantclick -->
+<script data-no-instant>InstantClick.init();</script>
+</body>
+</html>

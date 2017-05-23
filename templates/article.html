@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content-block %}
+	<div class="main">
+	<div class="article">
+		<div class="article-title">
+			<p>{{ post.title }}</p>		</div>
+		<small class="article-time">发表于 {{ post.date | date:"Y-m-d" }}  |  <a href="/sort={{ post.sortid.id }}">{{ post.sortid.sortname }}</a>
+		 		</small>
+		<div class="article-content">
+			{{ post.content | safe }}
+		</div>
+	</div>
+	</div>
+{% endblock %}

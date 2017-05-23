@@ -1,0 +1,1 @@
+function getkoto(){$.post("https://sslapi.hitokoto.cn/",null,function(e){$('.intro-siteinfo').html(e.hitokoto+" —— <strong>"+e.from+"</strong>")},'JSON')}getkoto();

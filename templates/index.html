@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<content>
+	<div class="main">
+		{% for perarticle in article_content %}
+			<div class="article">
+			<div class="article-title">
+				<a href="/post={{ perarticle.id }}">{{ perarticle.title }}</a>
+						</div>
+			<small class="article-time">发表于 {{ perarticle.date | date:"Y-m-d" }}  | <a href="/sort={{ perarticle.sortid.id }}">{{ perarticle.sortid.sortname }}</a>
+			 		</small>
+			<div class="article-content">
+				{{ perarticle.content|truncatewords:50|striptags }}
+				<p class="readmore"><a href="/post={{ perarticle.id }}">阅读全文&gt;&gt;</a></p>		</div>
+			</div>
+		{% endfor %}
+	<div class="page-url">
+	</div>
+	<div class="pagination">
+		 <span>1</span>  <a href="?page={{ article_content.paginator.next_page_number }}">{{ article_content.paginator.next_page_number }}</a>
+	</div>
+	</div>
+</content>
+{% endblock %}

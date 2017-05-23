@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block sortdetail %}
+	<div class="main">
+		<div class="article">
+			<ul type="disc">
+			{% for art in articles %}
+				{% if art.sortid_id == ssid %}
+					<li><a href="/post={{ art.id }}">{{ art.title }}</a></li>
+				{% endif %}
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+{% endblock %}
